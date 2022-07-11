@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "578159811030",
+    "project_id": "web-app-f62c0",
+    "storage_bucket": "web-app-f62c0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578159811030:android:234826e13790c52c2c2c77",
+        "android_client_info": {
+          "package_name": "com.karan.sankheshwar_customer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "578159811030-usvn1i3dmdu5ftbg9081h2ese86sk5rn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJxbuJukELm5wsXQrZOe13RmLJ_gn687M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "578159811030-usvn1i3dmdu5ftbg9081h2ese86sk5rn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
