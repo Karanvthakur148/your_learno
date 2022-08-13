@@ -12,6 +12,15 @@ class LoginController extends GetxController {
 
   Rx<AutovalidateMode> autoValidateMode = AutovalidateMode.disabled.obs;
   final formKey = GlobalKey<FormState>();
+  // RxInt collectionReference = 0.obs;
+  // final CollectionReference messageCollection =
+  //     FirebaseFirestore.instance.collection('users');
+  
+
+  @override
+  void onInit() async {
+    super.onInit();
+  }
 
   String? phoneValidator(String value) {
     if (value == "") {

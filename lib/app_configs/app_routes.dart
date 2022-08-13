@@ -42,8 +42,8 @@ class AppPages {
       binding: TokenTransactionScreenBindings(),
     ),
     GetPage(
-      name: WalletScreen.routeName,
-      page: () => const WalletScreen(),
+      name: HomeScreen.routeName,
+      page: () => const HomeScreen(),
       binding: WalletScreenBindings(),
     ),
   ];

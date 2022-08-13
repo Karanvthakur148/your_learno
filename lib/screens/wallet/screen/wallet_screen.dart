@@ -3,118 +3,117 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/state_manager.dart';
 import 'package:sankheshwar_customer/screens/wallet/controller/wallet_controller.dart';
 
-import '../../../utils/app_appbar.dart';
-
-class WalletScreen extends GetView<WalletController> {
-  static const String routeName = "/WalletScreen";
-  const WalletScreen({Key? key}) : super(key: key);
+class HomeScreen extends GetView<WalletController> {
+  static const String routeName = "/home";
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppAppbar.titleWithoutBackButton(title: 'Wallet'),
+      drawer: Drawer(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text('Home'),
+        actions: [
+          // Navigate to the Search Screen
+          IconButton(
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => const SearchPage())),
+              icon: const Icon(Icons.search))
+        ],
+      ),
       body: ListView(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
+            padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
             child: Container(
-              child: Column(children: [
-                SizedBox(height: 10.h),
-                Card(
-                  elevation: 2,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.r)),
-                  child: Container(
-                    margin:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 5.h),
-                    height: 110.h,
-                    width: double.maxFinite,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.r)),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                child: GridView.builder(
+              padding: EdgeInsets.fromLTRB(5.w, 0, 5.w, 8.h),
+              shrinkWrap: true,
+              physics: BouncingScrollPhysics(),
+              itemCount: 10,
+              scrollDirection: Axis.vertical,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 2.w,
+                  mainAxisSpacing: 2.h),
+              itemBuilder: (BuildContext context, int index) {
+                return GestureDetector(
+                  onTap: () {
+                    // Get.to(AudioBookDetail());
+                  },
+                  child: Card(
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.r)),
+                    child: Container(
+                      height: 30.h,
+                      width: 150.w,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(5.r),
+                      ),
+                      child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Wallet Ballance',
-                                  style: TextStyle(fontSize: 18.sp)),
-                              Icon(
-                                Icons.wallet,
-                                size: 40.sp,
-                              )
-                            ],
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5.r),
+                            child: Image.asset("assets/codewithherry.png",
+                                width: 150.w, height: 90.h, fit: BoxFit.fill),
+                          ),
+                          SizedBox(height: 10.h),
+                          Text(
+                            "Master React",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 16.sp),
                           ),
                           Text(
-                            '₹100',
-                            style: TextStyle(fontSize: 18.sp),
+                            "Code with Herry",
+                            textAlign: TextAlign.center,
+                            style:
+                                TextStyle(fontSize: 12.sp, color: Colors.grey),
                           ),
-                          SizedBox(height: 5.h),
-                          Container(
-                            width: 150.w,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Container(
-                                  height: 50.h,
-                                  width: 50.w,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).primaryColor),
-                                  child: Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Container(
-                                  height: 50.h,
-                                  width: 50.w,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color: Theme.of(context).primaryColor),
-                                  child: Icon(Icons.qr_code_scanner,
-                                      color: Colors.white),
-                                )
-                              ],
-                            ),
-                          )
-                        ]),
+                        ],
+                      ),
+                    ),
                   ),
-                ),
-                SizedBox(height: 10.h),
-                Align(alignment: Alignment.topLeft, child: Text('Transaction')),
-                ListView.builder(
-                    padding: EdgeInsets.symmetric(vertical: 10.h),
-                    physics: NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemCount: 5,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: EdgeInsets.symmetric(vertical: 5.h),
-                        child: Card(
-                          elevation: 2,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15.r)),
-                          child: Container(
-                              margin: EdgeInsets.symmetric(horizontal: 10.w),
-                              height: 70.h,
-                              width: double.maxFinite,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(15.r)),
-                              child: ListTile(
-                                title: Text('Amount : 100'),
-                                subtitle: Text('Type : Add'),
-                                trailing: Icon(Icons.keyboard_arrow_down_sharp),
-                              )),
-                        ),
-                      );
-                    })
-              ]),
-            ),
+                );
+              },
+            )),
           )
         ],
       ),
+    );
+  }
+}
+
+class SearchPage extends StatelessWidget {
+  const SearchPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          // The search area here
+          title: Container(
+        width: double.infinity,
+        height: 40,
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(5)),
+        child: Center(
+          child: TextField(
+            decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.search),
+                suffixIcon: IconButton(
+                  icon: const Icon(Icons.clear),
+                  onPressed: () {
+                    /* Clear the search field */
+                  },
+                ),
+                hintText: 'Search...',
+                border: InputBorder.none),
+          ),
+        ),
+      )),
     );
   }
 }

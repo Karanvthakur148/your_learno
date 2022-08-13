@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:sankheshwar_customer/utils/app_button.dart';
+import 'package:sankheshwar_customer/screens/dashboard/screen/dashboard_screen.dart';
 
-import '../../registration/screen/registration_screen.dart';
 import '../controller/login_controller.dart';
 
 class LoginScreen extends GetView<LoginController> {
@@ -13,50 +12,71 @@ class LoginScreen extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
-        body: Center(
-          child: SingleChildScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            child: ListView(
-              physics: const BouncingScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: 25.w),
-              shrinkWrap: true,
+        child: Scaffold(
+      body: Container(
+          height: double.infinity,
+          width: double.maxFinite,
+          decoration: const BoxDecoration(
+              color: Colors.black,
+              image: DecorationImage(
+                  opacity: .3,
+                  image: AssetImage("assets/background.jpeg"),
+                  fit: BoxFit.fill)),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: 25.h),
-                Image.asset('assets/appstore.png', height: 200),
-                SizedBox(height: 10.h),
-                textField(context),
-                SizedBox(height: 20),
-                AppButton.primaryButton(
-                    title: 'Log In',
-                    onPressed: () {
-                      controller.onLogin();
-                    },
-                    controller: controller.loginButton),
-                SizedBox(height: 15),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text("Don't have an account? "),
-                      GestureDetector(
-                        onTap: () {
-                          Get.toNamed(RegistrationScreen.routeName);
-                        },
-                        child: Text(
-                          "SignUp",
-                          style: TextStyle(
-                              color: Colors.redAccent,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
+                SizedBox(
+                  height: 380.h,
+                ),
+                Text(
+                  "heloo everyone,",
+                  style: TextStyle(color: Colors.white, fontSize: 26.sp),
+                ),
+                Text(
+                  "we provide online solution for study",
+                  style: TextStyle(color: Colors.white, fontSize: 22.sp),
+                ),
+                Text(
+                  "lets learn together",
+                  style: TextStyle(color: Colors.white, fontSize: 18.sp),
+                ),
+                SizedBox(height: 10),
+                GestureDetector(
+                  onTap: () {
+                    Get.offAndToNamed(DashBoardScreen.routeName);
+                  },
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 100),
+                      child: Center(
+                          child: Container(
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Theme.of(context).primaryColor),
+                          borderRadius: BorderRadius.circular(10.r),
                         ),
-                      )
-                    ])
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                                "assets/googleicon-removebg-preview.png",
+                                height: 35.h,
+                                width: 35.w),
+                            SizedBox(width: 10),
+                            Text(
+                              'Login ',
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 22.sp),
+                            ),
+                          ],
+                        ),
+                      ))),
+                )
               ],
             ),
-          ),
-        ),
-      ),
-    );
+          )),
+    ));
   }
 
   textField(BuildContext context) {

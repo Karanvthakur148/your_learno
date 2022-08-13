@@ -13,23 +13,23 @@ class DashBoardScreen extends GetView<DashboardController> {
     return Scaffold(
         // ignore: avoid_unnecessary_containers
         body: Obx(() => Container(
-            child: controller.pageData[controller.currentindex.value])),
+            child: controller.pageData[controller.currentIndex.value])),
         bottomNavigationBar: Obx(() {
           return BottomNavigationBar(
               selectedItemColor: Theme.of(context).primaryColor,
               unselectedItemColor: Colors.teal,
               showSelectedLabels: true,
               showUnselectedLabels: true,
-              currentIndex: controller.currentindex.value,
+              currentIndex: controller.currentIndex.value,
               selectedFontSize: 14.0,
               unselectedFontSize: 14.0,
               onTap: controller.onItemTapped,
               items: const [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.wallet), label: 'Wallet'),
+                    icon: Icon(Icons.home_outlined), label: 'Home'),
+                BottomNavigationBarItem(icon: Icon(Icons.token), label: 'My'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.token), label: 'Token'),
-                BottomNavigationBarItem(icon: Icon(Icons.menu), label: 'Menu'),
+                    icon: Icon(Icons.person), label: 'Profile'),
               ]);
         }));
   }
@@ -44,7 +44,7 @@ class DashBoardScreen extends GetView<DashboardController> {
             IconButton(
               enableFeedback: true,
               onPressed: () {
-                controller.currentindex.value = 0;
+                controller.currentIndex.value = 0;
               },
               // ignore: unrelated_type_equality_checks
               icon: const Icon(
@@ -59,7 +59,7 @@ class DashBoardScreen extends GetView<DashboardController> {
         IconButton(
           enableFeedback: true,
           onPressed: () {
-            controller.currentindex.value = 1;
+            controller.currentIndex.value = 1;
           },
           // ignore: unrelated_type_equality_checks
           icon: Icon(
@@ -73,7 +73,7 @@ class DashBoardScreen extends GetView<DashboardController> {
           child: IconButton(
             enableFeedback: true,
             onPressed: () {
-              controller.currentindex.value = 2;
+              controller.currentIndex.value = 2;
             },
             // ignore: unrelated_type_equality_checks
             icon: Container(
