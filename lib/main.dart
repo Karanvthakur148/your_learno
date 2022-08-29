@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (BuildContext context, Widget? child) {
         return GetMaterialApp(
-          theme: FlexThemeData.light(scheme: FlexScheme.mango),
+          theme: FlexThemeData.light(scheme: FlexScheme.bahamaBlue),
           debugShowCheckedModeBanner: false,
           initialRoute: LoginScreen.routeName,
           getPages: AppPages.pages,

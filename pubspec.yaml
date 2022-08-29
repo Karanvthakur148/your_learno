@@ -45,6 +45,14 @@ dependencies:
   rounded_loading_button: ^2.1.0
   firebase_messaging: ^11.4.4
   flutter_local_notifications: ^9.6.1
+  flutter_audio_waveforms: ^1.2.1+6
+  carousel_slider: ^4.0.0
+  flutter_rating_bar: ^4.0.1
+  youtube_player_flutter: ^8.1.0
+  delayed_display: ^2.0.0
+  share_plus: ^4.0.10+1
+
+
 
 
 dev_dependencies:

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../controller/dashboard_controller.dart';
@@ -11,25 +12,28 @@ class DashBoardScreen extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // ignore: avoid_unnecessary_containers
         body: Obx(() => Container(
             child: controller.pageData[controller.currentIndex.value])),
         bottomNavigationBar: Obx(() {
           return BottomNavigationBar(
               selectedItemColor: Theme.of(context).primaryColor,
-              unselectedItemColor: Colors.teal,
+              unselectedItemColor: Colors.grey.shade800,
               showSelectedLabels: true,
               showUnselectedLabels: true,
               currentIndex: controller.currentIndex.value,
-              selectedFontSize: 14.0,
-              unselectedFontSize: 14.0,
+              selectedFontSize: 14.sp,
+              unselectedFontSize: 12.sp,
               onTap: controller.onItemTapped,
               items: const [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.home_outlined), label: 'Home'),
-                BottomNavigationBarItem(icon: Icon(Icons.token), label: 'My'),
+                    icon: Icon(Icons.star_border_rounded), label: 'Featured'),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: 'Profile'),
+                    icon: Icon(Icons.play_circle), label: 'My Learning'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.favorite), label: 'WishList'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.account_circle_outlined),
+                    label: 'Account'),
               ]);
         }));
   }

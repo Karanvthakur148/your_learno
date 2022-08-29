@@ -29,6 +29,45 @@ class AppAppbar {
     );
   }
 
+  static AppBar titleWithBackButton({required String title}) {
+    return AppBar(
+      centerTitle: true,
+      leading: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: Icon(Icons.arrow_back_ios),
+      ),
+      actions: [
+        IconButton(onPressed: () {}, icon: Icon(Icons.share)),
+        SizedBox(
+          width: 10,
+        )
+      ],
+      elevation: 1,
+      title: Text(
+        title,
+      ),
+    );
+  }
+
+  static AppBar withOutTitleAndShareButtonBackButton() {
+    return AppBar(
+      backgroundColor: Colors.white,
+      centerTitle: true,
+      leading: IconButton(
+        onPressed: () {
+          Get.back();
+        },
+        icon: Icon(
+          Icons.arrow_back_ios,
+          color: Colors.black,
+        ),
+      ),
+      elevation: 0,
+    );
+  }
+
   static AppBar titleWithoutBackButton({required String title}) {
     return AppBar(
       centerTitle: true,
